@@ -1,0 +1,22 @@
+Font: Acumin, Classic Sans
+Icons:
++ Setting: <i class="fas fa-cog"></i>
++ List: <i class="fas fa-list-ul"></i>
++ play store: <i class="fab fa-google-play"></i>
++ info: <i class="fas fa-info-circle"></i>
++ Puzzle (Issue): <i class="fas fa-puzzle-piece"></i>
++ Gameplay: <i class="fas fa-gamepad"></i>
++ Themes: <i class="fas fa-palette"></i>
++ Redo: <i class="fas fa-redo"></i>
++ Undo: <i class="fas fa-undo"></i>
++ Check: <i class="fas fa-check"></i>
++ Pen: <i class="fas fa-pen"></i>
++ Chevron-right: <i class="fas fa-chevron-right"></i>
++ Chevron-left: <i class="fas fa-chevron-left"></i>
+Color:
++ Set 1:
+- orange: #e7791f
+- black: #333
+- white: #e9e9e9
+- gray: #666666
++ Set 2: (to be continued)
