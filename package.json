@@ -7,10 +7,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "lodash": "^4.17.11",
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.4",
     "react-native-elements": "^0.19.1",
     "react-native-gesture-handler": "^1.0.9",
+    "react-native-modal": "^7.0.1",
     "react-native-vector-icons": "^6.1.0",
     "react-navigation": "^3.0.0"
   },
