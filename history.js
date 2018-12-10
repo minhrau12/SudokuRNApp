@@ -3,7 +3,7 @@ import {Text, View, TouchableNativeFeedback,ScrollView} from 'react-native';
 import {Icon} from 'react-native-elements';
 import styles from "./styles";
 
-class HistoryScreen extends Component {
+export default class HistoryScreen extends Component {
     constructor(){
         super()
     }
@@ -48,12 +48,7 @@ class HistoryScreen extends Component {
                         </View>
                     </TouchableNativeFeedback>
                 </View>
-                <ScrollView>
-
-                </ScrollView>
             </View>
         );
     }
 }
-
-module.exports = HistoryScreen;

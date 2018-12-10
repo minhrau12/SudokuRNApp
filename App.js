@@ -16,14 +16,15 @@ import Modal from 'react-native-modal';
 import styles from './styles';
 import SettingsScreen from './settings';
 import HistoryScreen from './history';
+import GameScreen from './game';
 
 type Props = {};
 
 const {widthScr,heightScr} = Dimensions.get("window");
 
 class HomeScreen extends Component {
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.state = {
             infoModalVisible: false,
         };
@@ -59,7 +60,7 @@ class HomeScreen extends Component {
                     <Icon name='chevron-right' color='#f50' style={{fontSize: 20,fontWeight:"500"}} onPress={()=>{}}/>
                 </View>
                 <TouchableNativeFeedback
-                    onPress={() => this.props.navigation.push('Detail')}
+                    onPress={() => this.props.navigation.push('Game')}
                     background={TouchableNativeFeedback.SelectableBackground()}>
                     <View style={{height: 50, width: "80%",borderColor:"#fff",borderRadius:25,borderWidth: 1,justifyContent:"center",alignItems:"center",alignSelf:"center"}}>
                         <Text style={{fontSize: 15,fontWeight:"300",color:"#fff"}}>New Game</Text>
@@ -74,11 +75,22 @@ class HomeScreen extends Component {
                     </View>
                 </View>
                 <Modal isVisible={this.state.infoModalVisible}>
-                    <View style={{height: 100,justifyContent:"center",alignItems:"center",backgroundColor:"#e9e9e9"}}>
-                        <Text>Hello!</Text>
-                        <TouchableOpacity onPress={this._toggleInfoModal}>
-                            <Text>Hide me!</Text>
-                        </TouchableOpacity>
+                    <View style={{justifyContent:"center",alignItems:"center",backgroundColor:"#333",borderWidth: 2,borderRadius: 10,borderColor:"#666"}}>
+                        <View>
+                            <View style={{marginTop: 20,justifyContent:"center",alignSelf:"center",padding: 10}}>
+                                <Image source={require("./assets/logo.png")}
+                                       style={{justifyContent: "center", alignItems: "center", width: 100, height: 100}}/>
+                            </View>
+                            <View style={{alignItems:"center",margin: 10, padding: 10}}>
+                                <Text style={{fontSize: 20, color: "#fff"}}>Sudoku React Native App</Text>
+                                <Text style={{fontSize: 15, color: "#fff"}}>Design by me.</Text>
+                            </View>
+                            <TouchableOpacity onPress={this._toggleInfoModal}>
+                                <View style={{height: 50, margin: 10, padding: 10, justifyContent:"center",alignItems:'center',borderWidth:1,borderRadius: 10, borderColor:"#666"}}>
+                                    <Text style={{fontSize: 15, color: "#fff"}}>Close.</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </Modal>
             </View>
@@ -92,7 +104,7 @@ const RootStack = createStackNavigator(
         Home: HomeScreen,
         Setting: SettingsScreen,
         History:HistoryScreen,
-        // Game:GameScreen,
+        Game:GameScreen,
     },
     {
         initialRouteName: 'Home',

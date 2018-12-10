@@ -4,7 +4,7 @@ import {createStackNavigator, createAppContainer} from 'react-navigation';
 import {Icon, Button} from 'react-native-elements';
 import styles from "./styles";
 
-class SettingScreen extends Component {
+export default class SettingScreen extends Component {
     static navigationOptions = {
         title: "Setting Screen",
         header: null,
@@ -63,5 +63,3 @@ class SettingScreen extends Component {
         );
     }
 }
-
-module.exports = SettingScreen;
