@@ -21,6 +21,7 @@ import GameScreen from './game';
 type Props = {};
 
 const {widthScr,heightScr} = Dimensions.get("window");
+console.log(widthScr,heightScr);
 
 class HomeScreen extends Component {
     constructor(){
@@ -86,7 +87,7 @@ class HomeScreen extends Component {
                                 <Text style={{fontSize: 15, color: "#fff"}}>Design by me.</Text>
                             </View>
                             <TouchableOpacity onPress={this._toggleInfoModal}>
-                                <View style={{height: 50, margin: 10, padding: 10, justifyContent:"center",alignItems:'center',borderWidth:1,borderRadius: 10, borderColor:"#666"}}>
+                                <View style={{height: 50, margin: 10, padding: 10, justifyContent:"center",alignItems:'center',borderWidth:1,borderRadius: 25, borderColor:"#fff"}}>
                                     <Text style={{fontSize: 15, color: "#fff"}}>Close.</Text>
                                 </View>
                             </TouchableOpacity>
