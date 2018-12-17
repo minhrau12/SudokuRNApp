@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Platform, Text, View, Image, TouchableNativeFeedback} from 'react-native';
-import {createStackNavigator, createAppContainer} from 'react-navigation';
 import {Icon, Button} from 'react-native-elements';
 import styles from "./styles";
 
@@ -27,19 +26,19 @@ export default class SettingScreen extends Component {
                     <Text style={{fontSize: 20, color:"#fff",fontWeight:"300"}}>Settings</Text>
                 </View>
                 <View style={{alignItems:"center"}}>
-                    <TouchableNativeFeedback>
+                    <TouchableNativeFeedback onPress={() => this.props.navigation.push('Assist')}>
                         <View style={{width:"70%", height: 50, marginTop: 10, marginBottom: 10,flexDirection:"row",justifyContent:"center",alignItems:"center",borderWidth: 1,borderRadius: 25,borderColor:"#fff"}}>
                             <Icon name='puzzle-piece' type='font-awesome' color='#fff'/>
                             <Text style={{paddingLeft: 20,fontSize: 15,color:"#fff"}}>Assists</Text>
                         </View>
                     </TouchableNativeFeedback>
-                    <TouchableNativeFeedback>
+                    <TouchableNativeFeedback onPress={() => this.props.navigation.push('Gameplay')}>
                         <View style={{width:"70%", height: 50, marginTop: 10, marginBottom: 10, flexDirection:"row",justifyContent:"center",alignItems:"center",borderWidth: 1,borderRadius: 25,borderColor:"#fff"}}>
                             <Icon name='gamepad' type='font-awesome' color='#fff'/>
                             <Text style={{paddingLeft: 20, fontSize: 15,color:"#fff"}}>Gameplay</Text>
                         </View>
                     </TouchableNativeFeedback>
-                    <TouchableNativeFeedback>
+                    <TouchableNativeFeedback onPress={() => this.props.navigation.push('Themes')}>
                         <View style={{width:"70%", height: 50, marginTop: 10, marginBottom: 10, flexDirection:"row",justifyContent:"center",alignItems:"center",borderWidth: 1,borderRadius: 25,borderColor:"#fff"}}>
                             <Icon name='camera-retro' type='font-awesome' color='#fff'/>
                             <Text style={{paddingLeft: 20,fontSize: 15,color:"#fff"}}>Themes</Text>

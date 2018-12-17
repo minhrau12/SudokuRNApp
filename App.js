@@ -17,6 +17,9 @@ import styles from './styles';
 import SettingsScreen from './settings';
 import HistoryScreen from './history';
 import GameScreen from './game';
+import AssistScreen from './assists';
+import GameplayScreen from './gameplay';
+import ThemesScreen from './themes';
 
 type Props = {};
 
@@ -106,6 +109,9 @@ const RootStack = createStackNavigator(
         Setting: SettingsScreen,
         History:HistoryScreen,
         Game:GameScreen,
+        Assist: AssistScreen,
+        Gameplay: GameplayScreen,
+        Themes: ThemesScreen,
     },
     {
         initialRouteName: 'Home',

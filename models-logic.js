@@ -38,7 +38,7 @@ class Sudoku {
     //check if a number can be placed into that row in sudoku
     checkPosibleRow = (number,row,sudoku) =>{
         for (let col = 0;col < 9;col++) {
-            if (sudoku[row*9 + col] === number) {
+            if (sudoku[row * 9 + col] === number) {
                 return false;
             }
         }
@@ -194,8 +194,7 @@ class Sudoku {
         return sudoku;
     };
 }
-const sdk = new Sudoku();
-export default sdk;
+export default new Sudoku();
 
 
 

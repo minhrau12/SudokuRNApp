@@ -12,7 +12,18 @@ export default class GameScreen extends Component {
       this.state = {
           elapsed_m: 0,
           elapsed_s: 0,
-          sudoku: [],
+          sudoku: [
+              0,0,0, 0,0,0, 0,0,0,
+              0,0,0, 0,0,0, 0,0,0,
+              0,0,0, 0,0,0, 0,0,0,
+
+              0,0,0, 0,0,0, 0,0,0,
+              0,0,0, 0,0,0, 0,0,0,
+              0,0,0, 0,0,0, 0,0,0,
+
+              0,0,0, 0,0,0, 0,0,0,
+              0,0,0, 0,0,0, 0,0,0,
+              0,0,0, 0,0,0, 0,0,0],
           test_sudoku: [
               0,0,0, 0,0,0, 0,0,0,
               0,0,0, 0,0,0, 0,0,0,
@@ -34,7 +45,7 @@ export default class GameScreen extends Component {
 
   solve_sudoku = () => {
       console.log(this.state.test_sudoku);
-      this.setState({test_sudoku: sdk.solve(sdk.sudoku)});
+      this.setState({sudoku: sdk.solve(this.state.test_sudoku)});
       console.log(this.state.test_sudoku);
       return true;
   };
