@@ -49,7 +49,7 @@ export default class GameScreen extends Component {
       console.log(this.state.test_sudoku);
       return true;
   };
-  componentWillMount(){
+  componentDidMount(){
       this.interval = setInterval(()=>{
         if (this.state.elapsed_s === 59) {
             this.setState({elapsed_s: 0,elapsed_m: this.state.elapsed_m+1});
