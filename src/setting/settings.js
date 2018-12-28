@@ -11,37 +11,32 @@ export default class SettingScreen extends Component {
 
     render() {
         return (
-            <View style={styles.settings}>
-                <View style={{
-                    padding: 20,
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    alignItems: "flex-start"
-                }}>
-                    <Icon name='chevron-left' color='#f50' style={{fontSize: 20,fontWeight:"500"}}/>
-                    <Text style={{fontSize: 15,color:"#fff"}}>Ambra</Text>
-                    <Icon name='chevron-right' color='#f50' style={{fontSize: 20,fontWeight:"500"}}/>
+            <View style={styles.scrollview}>
+                <View style={styles.color_change_view}>
+                    <Icon name='chevron-left' color='#f50' style={styles.color_change_chevron}/>
+                    <Text style={styles.color_change_text}>Ambra</Text>
+                    <Icon name='chevron-right' color='#f50' style={styles.color_change_chevron}/>
                 </View>
-                <View style={{marginTop: 20,marginBottom: 40, justifyContent:"center",alignItems:"center"}}>
-                    <Text style={{fontSize: 20, color:"#fff",fontWeight:"300"}}>Settings</Text>
+                <View style={styles.title_view}>
+                    <Text style={styles.title_text}>Settings</Text>
                 </View>
-                <View style={{alignItems:"center"}}>
+                <View style={styles.center}>
                     <TouchableNativeFeedback onPress={() => this.props.navigation.push('Assist')}>
-                        <View style={{width:"70%", height: 50, marginTop: 10, marginBottom: 10,flexDirection:"row",justifyContent:"center",alignItems:"center",borderWidth: 1,borderRadius: 25,borderColor:"#fff"}}>
+                        <View style={styles.setting_button_view}>
                             <Icon name='puzzle-piece' type='font-awesome' color='#fff'/>
-                            <Text style={{paddingLeft: 20,fontSize: 15,color:"#fff"}}>Assists</Text>
+                            <Text style={styles.setting_button_text}>Assists</Text>
                         </View>
                     </TouchableNativeFeedback>
                     <TouchableNativeFeedback onPress={() => this.props.navigation.push('Gameplay')}>
-                        <View style={{width:"70%", height: 50, marginTop: 10, marginBottom: 10, flexDirection:"row",justifyContent:"center",alignItems:"center",borderWidth: 1,borderRadius: 25,borderColor:"#fff"}}>
+                        <View style={styles.setting_button_view}>
                             <Icon name='gamepad' type='font-awesome' color='#fff'/>
-                            <Text style={{paddingLeft: 20, fontSize: 15,color:"#fff"}}>Gameplay</Text>
+                            <Text style={styles.setting_button_text}>Gameplay</Text>
                         </View>
                     </TouchableNativeFeedback>
                     <TouchableNativeFeedback onPress={() => this.props.navigation.push('Themes')}>
-                        <View style={{width:"70%", height: 50, marginTop: 10, marginBottom: 10, flexDirection:"row",justifyContent:"center",alignItems:"center",borderWidth: 1,borderRadius: 25,borderColor:"#fff"}}>
+                        <View style={styles.setting_button_view}>
                             <Icon name='camera-retro' type='font-awesome' color='#fff'/>
-                            <Text style={{paddingLeft: 20,fontSize: 15,color:"#fff"}}>Themes</Text>
+                            <Text style={styles.setting_button_text}>Themes</Text>
                         </View>
                     </TouchableNativeFeedback>
                 </View>

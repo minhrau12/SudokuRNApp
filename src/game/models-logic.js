@@ -1,42 +1,41 @@
-import {_} from 'lodash';
-
 //logic render for block
 //9x9
 //unique rows,unique columns, unique blocks
 //naive solution:
 class Sudoku {
-    sudoku = [
-        0,0,0, 0,0,0, 0,0,0,
-        0,0,0, 0,0,0, 0,0,0,
-        0,0,0, 0,0,0, 0,0,0,
+    constructor() {
+        this.sudoku = [
+            0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0,
 
-        0,0,0, 0,0,0, 0,0,0,
-        0,0,0, 0,0,0, 0,0,0,
-        0,0,0, 0,0,0, 0,0,0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0,
 
-        0,0,0, 0,0,0, 0,0,0,
-        0,0,0, 0,0,0, 0,0,0,
-        0,0,0, 0,0,0, 0,0,0];
+            0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-    rightSeq = [1,2,3,4,5,6,7,8,9];
-
+        this.rightSeq = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    }
     //return row of a cell
-    returnRow = (cell) => {
+    returnRow(cell){
         return Math.floor(cell/9);
     };
 
     //return col of a cell
-    returnCol = (cell) => {
+    returnCol(cell){
         return cell % 9;
     };
 
     //return block of a cell
-    returnBlock = (cell) => {
+    returnBlock(cell){
         return Math.floor(this.returnRow(cell) / 3) * 3 + Math.floor(this.returnCol(cell) / 3);
     };
 
     //check if a number can be placed into that row in sudoku
-    checkPosibleRow = (number,row,sudoku) =>{
+    checkPosibleRow(number,row,sudoku){
         for (let col = 0;col < 9;col++) {
             if (sudoku[row * 9 + col] === number) {
                 return false;
@@ -46,7 +45,7 @@ class Sudoku {
     };
 
     //check if a number can be placed into that col in sudoku
-    checkPossibleCol = (number,col,sudoku) => {
+    checkPossibleCol(number,col,sudoku){
         for(let row = 0;row < 9;row++) {
             if(sudoku[col + 9*row] === number) {
                 return false;
@@ -56,7 +55,7 @@ class Sudoku {
     };
 
     //check if a number can be placed into that block in sudoku
-    checkPossibleBlock = (number,block,sudoku) => {
+    checkPossibleBlock(number,block,sudoku){
         for (let i =0;i < 9;i++) {
             if(sudoku[Math.floor(block/3)*27 + i%3 + 9*Math.floor(i/3) + 3*(block%3)] === number) {
                 return false;
@@ -66,7 +65,7 @@ class Sudoku {
     };
 
     //check if a number can be placed in a cell
-    checkPossibleNumber = (cell,number,sudoku) => {
+    checkPossibleNumber(cell,number,sudoku){
         var row = this.returnRow(cell);
         var col = this.returnCol(cell);
         var block = this.returnBlock(cell);
@@ -74,7 +73,7 @@ class Sudoku {
     };
 
     //check if that row is complete
-    checkCompleteRow = (row,sudoku) => {
+    checkCompleteRow(row,sudoku){
         let testRow = [];
         for (let i =0;i < 9;i++) {
             testRow[i].push(sudoku[row*9 + i]);
@@ -83,7 +82,7 @@ class Sudoku {
     };
 
     //check if that col is complete
-    checkCompleteCol = (col,sudoku) => {
+    checkCompleteCol(col,sudoku){
         let testCol = [];
         for(let i =0;i < 9;i++) {
             testCol[i].push(sudoku[col + i*9]);
@@ -92,7 +91,7 @@ class Sudoku {
     };
 
     //check if that block is complete
-    checkCompleteBlock = (block,sudoku) => {
+    checkCompleteBlock(block,sudoku){
         let testBlock = [];
         for(let i =0;i < 9;i++) {
             testBlock[i].push(sudoku[Math.floor(block/3)*27 + i%3 + 9*Math.floor(i/3) + 3*(block%3)]);
@@ -101,8 +100,8 @@ class Sudoku {
     };
 
     //check if a sudoku is complete
-    checkCompleteSudoku = (sudoku) => {
-        for (let i =0;i < 9;i++) {
+    checkCompleteSudoku(sudoku){
+        for (let i = 0;i < 9;i++) {
             if(!this.checkPosibleRow(i,sudoku) || !this.checkPossibleCol(i,sudoku) || this.checkPossibleBlock(i,sudoku)) {
                 return false;
             }
@@ -111,7 +110,7 @@ class Sudoku {
     };
 
     //return array with all possible values in a cell
-    possibleValue = (cell,sudoku) => {
+    possibleValue(cell,sudoku){
         let possible = [];
         for(let i = 1;i <= 9;i++) {
             if(this.checkPossibleNumber(cell,i,sudoku)) {
@@ -122,13 +121,13 @@ class Sudoku {
     };
 
     //return random value picked from array of possible values
-    randomPossibleValue = (possible,cell) => {
+    randomPossibleValue(possible,cell){
         let randomPicked = Math.floor(Math.random() * possible[cell].length);
         return position[cell][randomPicked];
     };
 
     //scan sudoku for unique
-    scanSudoku = (sudoku) => {
+    scanSudoku(sudoku) {
         let possible = [];
         for(let i =0;i < 81;i++) {
             if(sudoku[i] === 0){
@@ -143,7 +142,7 @@ class Sudoku {
     };
 
     //remove attempt
-    removeAttempt = (attemptArray,number) => {
+    removeAttempt(attemptArray,number){
         let newArray = [];
         for (let i =0;i < attemptArray.length;i++) {
             if(attemptArray[i] !== number) {
@@ -153,7 +152,7 @@ class Sudoku {
     };
 
     //return index of a cell where there are less possible number
-    nextRandom = (possible) => {
+    nextRandom(possible){
         let max = 9;
         let minChoice = 0;
         for(let i =0;i < 81;i++) {
@@ -168,7 +167,7 @@ class Sudoku {
     };
 
     //solve a sudoku
-    solve = (sudoku) => {
+    solve(sudoku){
         let saved = [];
         let savedSudoku = [];
         let i=0;
@@ -194,7 +193,7 @@ class Sudoku {
         return sudoku;
     };
 }
-export default new Sudoku();
+module.exports = Sudoku;
 
 
 

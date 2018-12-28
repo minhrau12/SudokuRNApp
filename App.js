@@ -10,18 +10,15 @@ import React, {Component} from 'react';
 import {Dimensions, Text, View, Image, TouchableNativeFeedback,TouchableOpacity} from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 import {Icon, Button} from 'react-native-elements';
-import {_}from 'lodash';
 import Modal from 'react-native-modal';
 
-import styles from './styles';
-import SettingsScreen from './settings';
-import HistoryScreen from './history';
-import GameScreen from './game';
-import AssistScreen from './assists';
-import GameplayScreen from './gameplay';
-import ThemesScreen from './themes';
-
-type Props = {};
+import styles from './src/styles';
+import SettingsScreen from './src/setting/settings';
+import HistoryScreen from './src/history/history';
+import GameScreen from './src/game/game';
+import AssistScreen from './src/assists/assists';
+import GameplayScreen from './src/gameplay/gameplay';
+import ThemesScreen from './src/themes/themes';
 
 const {widthScr,heightScr} = Dimensions.get("window");
 console.log(widthScr,heightScr);
@@ -44,34 +41,29 @@ class HomeScreen extends Component {
     render() {
         return (
             <View style={styles.home}>
-                <View style={{
-                    padding: 20,
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    alignItems: "flex-start"
-                }}>
-                    <Icon name='chevron-left' color='#f50' style={{fontSize: 20,fontWeight:"500"}}/>
-                    <Text style={{fontSize: 15,color:"#fff"}}>Ambra</Text>
-                    <Icon name='chevron-right' color='#f50' style={{fontSize: 20,fontWeight:"500"}}/>
+                <View style={styles.color_change_view}>
+                    <Icon name='chevron-left' color='#f50' style={styles.color_chane_chevron}/>
+                    <Text style={styles.color_change_text}>Ambra</Text>
+                    <Icon name='chevron-right' color='#f50' style={styles.color_chane_chevron}/>
                 </View>
-                <View style={{marginTop: 50,justifyContent:"center",alignSelf:"center",padding: 10}}>
+                <View style={styles.logo_view}>
                     <Image source={require("./assets/logo.png")}
-                           style={{justifyContent: "center", alignItems: "center", width: 150, height: 150}}/>
+                           style={styles.logo_image}/>
                 </View>
-                <View style={{padding: 20, flexDirection: "row", justifyContent: "space-around",alignItems:"center"}}>
-                    <Icon name='chevron-left' color='#f50' style={{fontSize: 20,fontWeight:"500"}} onPress={()=>{}}/>
-                    <Text style={{fontSize: 15,color:"#fff"}}>Easy</Text>
-                    <Icon name='chevron-right' color='#f50' style={{fontSize: 20,fontWeight:"500"}} onPress={()=>{}}/>
+                <View style={styles.mode_view}>
+                    <Icon name='chevron-left' color='#f50' style={styles.color_chane_chevron} onPress={()=>{}}/>
+                    <Text style={styles.color_change_text}>Easy</Text>
+                    <Icon name='chevron-right' color='#f50' style={styles.color_chane_chevron} onPress={()=>{}}/>
                 </View>
                 <TouchableNativeFeedback
                     onPress={() => this.props.navigation.push('Game')}
                     background={TouchableNativeFeedback.SelectableBackground()}>
-                    <View style={{height: 50, width: "80%",borderColor:"#fff",borderRadius:25,borderWidth: 1,justifyContent:"center",alignItems:"center",alignSelf:"center"}}>
-                        <Text style={{fontSize: 15,fontWeight:"300",color:"#fff"}}>New Game</Text>
+                    <View style={styles.new_game_button_view}>
+                        <Text style={styles.new_game_button_text}>New Game</Text>
                     </View>
                 </TouchableNativeFeedback>
-                <View style={{flex:1,justifyContent:"flex-end",alignItems:"center"}}>
-                    <View style={{width: "80%",margin: 10,padding: 10,flexDirection:"row",justifyContent:"space-between",alignItems:"center"}}>
+                <View style={styles.bottom_button_view}>
+                    <View style={styles.bottom_item_view}>
                         <Icon name='cog' type='font-awesome' color='#fff' onPress={()=> this.props.navigation.push('Setting')}/>
                         <Icon name='social-github' type='foundation' color='#fff' onPress={()=> this.props.navigation.push('Github')}/>
                         <Icon name='list' type='font-awesome' color='#fff' onPress={()=> this.props.navigation.push('History')}/>
@@ -79,19 +71,19 @@ class HomeScreen extends Component {
                     </View>
                 </View>
                 <Modal isVisible={this.state.infoModalVisible}>
-                    <View style={{justifyContent:"center",alignItems:"center",backgroundColor:"#333",borderWidth: 2,borderRadius: 10,borderColor:"#666"}}>
+                    <View style={styles.info_modal_view}>
                         <View>
-                            <View style={{marginTop: 20,justifyContent:"center",alignSelf:"center",padding: 10}}>
+                            <View style={styles.info_modal_logo_view}>
                                 <Image source={require("./assets/logo.png")}
-                                       style={{justifyContent: "center", alignItems: "center", width: 100, height: 100}}/>
+                                       style={styles.info_modal_logo_image}/>
                             </View>
-                            <View style={{alignItems:"center",margin: 10, padding: 10}}>
-                                <Text style={{fontSize: 20, color: "#fff"}}>Sudoku React Native App</Text>
-                                <Text style={{fontSize: 15, color: "#fff"}}>Design by me.</Text>
+                            <View style={styles.info_modal_title_view}>
+                                <Text style={styles.info_modal_title_text}>Sudoku React Native App</Text>
+                                <Text style={styles.info_modal_title_text}>Design by me.</Text>
                             </View>
                             <TouchableOpacity onPress={this._toggleInfoModal}>
-                                <View style={{height: 50, margin: 10, padding: 10, justifyContent:"center",alignItems:'center',borderWidth:1,borderRadius: 25, borderColor:"#fff"}}>
-                                    <Text style={{fontSize: 15, color: "#fff"}}>Close.</Text>
+                                <View style={styles.info_modal_button_view}>
+                                    <Text style={styles.info_modal_button_text}>Close.</Text>
                                 </View>
                             </TouchableOpacity>
                         </View>
@@ -120,7 +112,7 @@ const RootStack = createStackNavigator(
 const AppContainer = createAppContainer(RootStack);
 
 //Main class
-export default class App extends Component<Props> {
+export default class App extends Component {
     render() {
         return <AppContainer/>;
     }
