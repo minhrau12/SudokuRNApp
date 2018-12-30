@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View,ScrollView} from 'react-native';
+import {Text, View,ScrollView,TouchableOpacity} from 'react-native';
 import {Icon} from 'react-native-elements';
 import {_} from 'lodash';
 import styles from "./styles";
@@ -25,41 +25,53 @@ export default class AssistScreen extends Component {
             <Icon name="chevron-right" color="#f50" style={styles.chevron_style} />
           </View>
           <View style={styles.title_view}>
-            <Text
-              style={styles.title_text}
-            >
-              Assists
-            </Text>
+            <Text style={styles.title_text}>Assists</Text>
           </View>
           <View style={styles.opt_view}>
-            <Text
-              style={styles.opt_text}
-            >
-              Highlight same digits
-            </Text>
-            <View style={styles.opt_button_view}>
-              <Text style={styles.white}>ON</Text>
-            </View>
+            <Text style={styles.opt_text}>Highlight same digits</Text>
+            <TouchableOpacity onPress={() => this.setState({
+                  same_digit: !this.state.same_digit
+                })}>
+              <View style={[styles.opt_button_view, this.state.same_digit && styles.opt_button_view_on]}>
+                <Text
+                  style={[
+                    styles.white,
+                    this.state.same_digit && styles.black
+                  ]}
+                >
+                  {this.state.same_digit ? 'ON' : 'OFF'}
+                </Text>
+              </View>
+            </TouchableOpacity>
           </View>
           <View style={styles.opt_view}>
-            <Text
-            style={styles.opt_text}
-            >
+            <Text style={styles.opt_text}>
               Show remaining digit count
             </Text>
-            <View style={styles.opt_button_view}>
-              <Text style={styles.white}>ON</Text>
-            </View>
+            <TouchableOpacity onPress={() => this.setState({
+                  remaining: !this.state.remaining
+                })}>
+              <View style={[styles.opt_button_view, this.state.remaining && styles.opt_button_view_on]}>
+                <Text
+                  style={[
+                    styles.white,
+                    this.state.remaining && styles.black
+                  ]}
+                >
+                  {this.state.remaining ? 'ON' : 'OFF'}
+                </Text>
+              </View>
+            </TouchableOpacity>
           </View>
           <View style={styles.opt_view}>
-            <Text
-            style={styles.opt_text}
-            >
+            <Text style={styles.opt_text}>
               Automatic pencil value removal
             </Text>
-            <View style={styles.opt_button_view}>
-              <Text style={styles.white}>ON</Text>
-            </View>
+            <TouchableOpacity onPress={()=>this.setState({value_removal: !this.state.value_removal})}>
+              <View style={[styles.opt_button_view,this.state.value_removal && styles.opt_button_view_on]}>
+                <Text style={[styles.white,this.state.value_removal && styles.black]}>{this.state.value_removal ? 'ON' : 'OFF'}</Text>
+              </View>
+            </TouchableOpacity>
           </View>
         </ScrollView>;
   };

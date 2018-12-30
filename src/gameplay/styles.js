@@ -16,5 +16,7 @@ module.exports = StyleSheet.create({
     opt_text: { fontSize: 13, color: "#fff", textAlign: "center", paddingBottom: 5 },
     opt_2nd_text: { fontSize: 10, color: "#ccc", textAlign: "center", paddingBottom: 5 },
     opt_button_view: { width: 70, height: 70, borderWidth: 1, borderRadius: 100, justifyContent: "center", alignItems: "center" },
+    opt_button_view_on: { width: 70, height: 70, borderWidth: 1, borderRadius: 100, justifyContent: "center", alignItems: "center",backgroundColor:"#f50" },
     white: { color: "#fff" },
+    black: { color: "#333" },
 });
